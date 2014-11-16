@@ -1,5 +1,6 @@
 codename-tank
 =============
+[![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/sinfo/codename-tank?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The cannon mobile app is a hybrid app based on Cordova developed by [SINFO](http://sinfo.org).
 
