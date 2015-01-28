@@ -1,4 +1,4 @@
-// Generated on 2014-11-16 using generator-ionic 0.6.1
+// Generated on 2015-01-06 using generator-ionic 0.6.1
 'use strict';
 
 var _ = require('lodash');
@@ -135,8 +135,7 @@ module.exports = function (grunt) {
 
     autoprefixer: {
       options: {
-        remove: false,
-        browsers: ['last 6 versions']
+        browsers: ['last 1 version']
       },
       dist: {
         files: [{

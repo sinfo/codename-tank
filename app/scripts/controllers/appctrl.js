@@ -1,6 +1,5 @@
 'use strict';
-angular.module('CodenameTank.controllers', [])
-
+angular.module('CodenameTank.controllers')
 .controller('AppCtrl', function($scope, $ionicModal, $timeout) {
   // Form data for the login modal
   $scope.loginData = {};
@@ -31,15 +30,5 @@ angular.module('CodenameTank.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
-  };
-})
-.controller('ReaderCtrl', function($scope, $cordovaBarcodeScanner) {
-  $scope.read = function(){
-    $cordovaBarcodeScanner.scan()
-      .then(function(imageData) {
-        console.log('Data readed: ', imageData);
-      }, function(error) {
-        console.log('teste'+error);
-      });
   };
 });

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title>"CodenameTank"</title>
+    <title>CodenameTank</title>
 
     <!-- build:css styles/vendor.css -->
     <!-- <link rel="stylesheet" href="vendor/some.contrib.css"> -->
@@ -12,6 +12,7 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
+    <access origin="*" />
   </head>
 
   <body ng-app="CodenameTank">
@@ -24,9 +25,8 @@
     <script src="lib/angular-animate/angular-animate.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="lib/collide/collide.js"></script>
-    <script src="lib/ionic/release/js/ionic.js"></script>
-    <script src="lib/ionic/release/js/ionic-angular.js"></script>
+    <script src="lib/ionic/js/ionic.js"></script>
+    <script src="lib/ionic/js/ionic-angular.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
@@ -38,7 +38,12 @@
         <!-- build:js scripts/scripts.js -->
         <script src="scripts/config.js"></script>
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers.js"></script>
+        <script src="scripts/modules.js"></script>
+        <script src="scripts/controllers/appctrl.js"></script>
+        <script src="scripts/controllers/readerctrl.js"></script>
+        <script src="scripts/controllers/speakersctrl.js"></script>
+        <script src="scripts/services/apiservice.js"></script>
+        <script src="scripts/services/dbservice.js"></script>
         <!-- endbuild -->
 </body>
 </html>

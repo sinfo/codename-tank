@@ -6,9 +6,9 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.controllers'])
+angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.controllers', 'CodenameTank.services'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $cordovaSQLite, DBService) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -19,10 +19,14 @@ angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.co
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+
+    DBService.initDB();
+
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
   $stateProvider
 
     .state('app', {
@@ -31,6 +35,7 @@ angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.co
       templateUrl: 'templates/menu.html',
       controller: 'AppCtrl'
     })
+
     .state('app.reader', {
       url: '/reader',
       views: {
@@ -60,7 +65,8 @@ angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.co
       url: '/speakers',
       views: {
         'menuContent' :{
-          templateUrl: 'templates/speakers.html'
+          templateUrl: 'templates/speakers.html',
+          controller: 'SpeakersCtrl'
         }
       }
     })

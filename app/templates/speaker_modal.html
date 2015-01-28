@@ -1,0 +1,22 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title" ng-bind="modalSpeaker.name"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{modalSpeaker.img}}">
+        <h2 ng-bind="modalSpeaker.name"></h2>
+        <p ng-bind="modalSpeaker.title"></p>
+      </div>
+
+      <div class="item item-body">
+        <p ng-bind="modalSpeaker.description"></p>
+      </div>
+    </div>
+  </ion-content>
+</div>
