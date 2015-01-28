@@ -29,5 +29,15 @@ For the front-end we are using AngularJS + Ionic Framework.
   3. Install <code>npm</code> dependencies: <code>$ npm install</code>
   4. Install <code>bower</code> dependencies: <code>$ bower install</code>
   5. Add one or more supported mobile platforms <code>$ grunt platform:add:android</code> this will also install cordova plugins dependencies for each platform
-  6. Launch app into your device <code>$ grunt run:android</code> or emulator <code>$ grunt emulate:ios</code>
-  7. When developing, it's possible to run the app on your device or emulator and watch for local changes <code>$ grunt run:android --livereload</code>
+  
+###Note
+
+Before running the app you must copy the database file ```assets/tank``` 
+
+On **Android** you must copy it to ```platforms/android/assets``` 
+
+On **iOS** you must copy it to the Resources directory and then Add it in to your Xcode Project. Right Click on the Resources directory, then click Add files.
+  
+### Launching app:
+  1. Launch app into your device <code>$ grunt run:android</code> or emulator <code>$ grunt emulate:ios</code>
+  2. When developing, it's possible to run the app on your device or emulator and watch for local changes <code>$ grunt run:android --livereload</code>
