@@ -58,6 +58,7 @@
     "https://github.com/wildabeast/BarcodeScanner.git",
     "https://git-wip-us.apache.org/repos/asf/cordova-plugin-inappbrowser.git",
     "https://github.com/brodysoft/Cordova-SQLitePlugin.git",
-    "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git"
+    "https://github.com/an-rahulpandey/cordova-plugin-dbcopy.git",
+    "org.apache.cordova.file-transfer"
   ]
 }

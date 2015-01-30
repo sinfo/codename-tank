@@ -1,6 +1,6 @@
 'use strict';
 angular.module('CodenameTank.services')
-.factory('DBService', ['$cordovaSQLite', 'ApiService', '$q', function ($cordovaSQLite, ApiService, $q) {
+.factory('DBService', ['$cordovaSQLite', 'ApiService', 'FileService', '$q', function ($cordovaSQLite, ApiService, FileService, $q) {
   var _db;
   var _speakers = [];
   var syncWithAPI = true;
@@ -21,9 +21,11 @@ angular.module('CodenameTank.services')
     // var promises = [];
     _speakers.length = 0;
     $cordovaSQLite.execute(_db, 'SELECT * FROM speakers', []).then(function(results) {
-
+      var _dbSpeaker;
       for (var i = 0; i < results.rows.length; i++) {
-        _speakers.push(results.rows.item(i));
+        _dbSpeaker = results.rows.item(i);
+        _dbSpeaker.img = cordova.file.dataDirectory + _dbSpeaker.img;
+        _speakers.push(_dbSpeaker);
       }
 
     }, function (err) {
@@ -55,22 +57,30 @@ angular.module('CodenameTank.services')
 
   function _syncDB() {
     var _dbPromises = [];
-    var apiPromises = ApiService.sync();
-    var _speaker;
-    $q.all(apiPromises).then(function(results){
-      for (var i = 0; i < results[0].data.length; i++) {
-        _speaker = results[0].data[i];
+    var apiSpeakers = [];
 
-        _dbPromises.push(
-          $cordovaSQLite.execute(_db,
-          'INSERT OR REPLACE INTO speakers (id,name, title, description, img, updated) VALUES (?, ?, ?, ?, ?, ?)',
-          [_speaker.id, _speaker.name, _speaker.title, _speaker.description, _speaker.img, _speaker.updated])
-        );
-      }
-      $q.all(_dbPromises).then(function(){
+    ApiService.getSpeakers().then(function(results){
+      for (var i = 0; i < results.data.length; i++) {
+        _dbPromises.push(_insertUpdateSpeaker(results.data[i]));
+      };
+      $q.all(_dbPromises).then(function(results){
+        console.log(results);
         syncWithAPI = false;
         _loadData();
       });
+    });
+  }
+
+  function _insertUpdateSpeaker(speaker){
+    return FileService.fetchFile(speaker.img).then(function(result){
+      return $cordovaSQLite.execute(_db,
+          'INSERT OR REPLACE INTO speakers (id,name, title, description, img, updated) VALUES (?, ?, ?, ?, ?, ?)',
+          [speaker.id, speaker.name, speaker.title, speaker.description, result.name, speaker.updated]);
+    }, function(error){
+      console.log(error);
+      return $cordovaSQLite.execute(_db,
+          'INSERT OR REPLACE INTO speakers (id,name, title, description, updated) VALUES (?, ?, ?, ?, ?)',
+          [speaker.id, speaker.name, speaker.title, speaker.description, speaker.updated])
     });
   }
 
