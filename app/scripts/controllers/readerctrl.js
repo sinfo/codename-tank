@@ -1,7 +1,7 @@
 'use strict';
 angular.module('CodenameTank.controllers')
 
-.controller('ReaderCtrl', function($scope, $cordovaBarcodeScanner, $ionicPlatform) {
+.controller('ReaderCtrl', ['$scope', '$cordovaBarcodeScanner', function($scope, $cordovaBarcodeScanner) {
   $scope.read = function(){
     $cordovaBarcodeScanner.scan()
       .then(function(imageData) {
@@ -10,4 +10,4 @@ angular.module('CodenameTank.controllers')
         console.log('teste'+error);
       });
   };
-});
+}]);

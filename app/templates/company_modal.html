@@ -1,0 +1,21 @@
+<div class="modal">
+  <ion-header-bar>
+    <h1 class="title" ng-bind="modalCompany.name"></h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list card">
+
+      <div class="item item-avatar">
+        <img src="{{modalCompany.img}}">
+        <h2 ng-bind="modalCompany.area"></h2>
+      </div>
+
+      <div class="item item-body">
+        <p ng-bind="modalCompany.description"></p>
+      </div>
+    </div>
+  </ion-content>
+</div>

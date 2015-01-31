@@ -70,11 +70,12 @@ angular.module('CodenameTank', ['ionic', 'ngCordova', 'config', 'CodenameTank.co
         }
       }
     })
-    .state('app.sponsors', {
-      url: '/sponsors',
+    .state('app.companies', {
+      url: '/companies',
       views: {
         'menuContent' :{
-          templateUrl: 'templates/sponsors.html'
+          templateUrl: 'templates/companies.html',
+          controller: 'CompaniesCtrl'
         }
       }
     })

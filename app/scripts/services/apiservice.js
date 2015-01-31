@@ -4,10 +4,15 @@ angular.module('CodenameTank.services')
   var baseUrl = 'https://deck.sinfo.org:443/api/';
 
   function _getSpeakers() {
-    return $http({ method: 'GET', url: baseUrl+'speakers'});
+    return $http({ method: 'GET', url: baseUrl + 'speakers'});
+  }
+
+  function _getCompanies() {
+    return $http({ method: 'GET', url: baseUrl + 'companies'});
   }
 
   return {
-    getSpeakers: _getSpeakers
+    getSpeakers: _getSpeakers,
+    getCompanies: _getCompanies
   };
 }]);
